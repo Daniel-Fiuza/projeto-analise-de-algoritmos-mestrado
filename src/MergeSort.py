@@ -1,6 +1,5 @@
 from time import time
 import sys
-print('limite de recursao atual: ', sys.getrecursionlimit())
 sys.setrecursionlimit(2000)
 
 class MergeSort():
@@ -16,7 +15,9 @@ class MergeSort():
     def run(self):
         for array in self.input_arrays:
             init_time = time()
+            print(f'[{self.__class__.__name__}]: INITIAL ARRAY: {array}')
             self.merge_sort(array, 0, len(array)-1)
+            print(f'[{self.__class__.__name__}]: FINAL ARRAY: {array}')
             time_elapsed = time() - init_time
             self.list_times.append(time_elapsed)
 
