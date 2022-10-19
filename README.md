@@ -6,7 +6,7 @@ e Merge Sort Adaptado, de modo que este utiliza o Insertion Sort para entradas p
 
 
 # Equipe
-- Daniel Fiuza Cordeiro de Moraes
+- ## Daniel Fiuza Cordeiro de Moraes
 
 # Estrutura do Projeto
 O projeto foi desenvolvido utilizando POO com o objetivo de reutilizá-lo e garantir uma boa legibilidade. Para isso, foi gerada a seguinte estrutura:
@@ -25,9 +25,17 @@ O projeto foi desenvolvido utilizando POO com o objetivo de reutilizá-lo e gara
 # Execução
 O projeto possui como dependência o programa python instalado.
 
-Para executar o código, entre na raiz do projeto e execute o seguinte comando no terminal:
-```
+Para executar o código, entre na raiz do projeto e execute os comandos a seguir:
+```bash
+# Instala o ambiente virtual
+python -m venv venv
+# Ativa o ambiente virtual
+source venv/bin/activate
+# Instala dependências
+pip install -r requirements.txt
+# Executa o código
 python main.py
 ```
 
-
+# Resultados Esperados
+![Comparação entre Algoritmos](./img/Figure_1.png)
