@@ -16,7 +16,6 @@ class InsertionSort():
             self.sort(array)
             time_elapsed = time() - init_time
             self.list_times.append(time_elapsed)
-            print('TIME: ', time_elapsed)
 
 
     def sort(self, array):
