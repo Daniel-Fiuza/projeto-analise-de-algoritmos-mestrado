@@ -1,11 +1,13 @@
 import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
+import copy
 
 class Plot():
 
-    def __init__(self, list_of_algorithms):
-        self.data = self.prepare_data(list_of_algorithms)
+    def __init__(self, list_of_algorithms, x_index):
+        self.organize_data(list_of_algorithms, x_index)
+        self.data = self.prepare_data(list_of_algorithms, x_index)
 
 
     def compare_algorithms(self):
@@ -22,14 +24,17 @@ class Plot():
 
         # fig.show()
 
-    def prepare_data(self, list_of_algorithms):
+    def prepare_data(self, list_of_algorithms, x_index):
         data = {}
-        length_of_array = -1
 
         for algorithm in list_of_algorithms:
             data[algorithm.class_name] = algorithm.list_times
-            length_of_array = len(algorithm.list_times)
 
-        data['index'] = [index for index in range(1,length_of_array+1)]
-
+        data['index'] = x_index
         return data
+
+
+    def organize_data(self, list_of_algorithms, x_index):        
+        x_index.sort()
+        for algorithm in list_of_algorithms:
+            algorithm.list_times.sort()

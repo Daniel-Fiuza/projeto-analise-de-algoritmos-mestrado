@@ -7,7 +7,8 @@ import copy
 
 
 def main():
-    input_arrays = Utils.generate_random_arrays(num_of_arrays=10)
+    utils = Utils()
+    input_arrays = utils.generate_random_arrays(num_of_arrays=10)
 
     input_insert = copy.deepcopy(input_arrays)
     insertion_sort = InsertionSort(input_insert)
@@ -26,7 +27,10 @@ def main():
     print('MERGE TIMES: ', merge_sort.list_times)
     print('MERGE ADAPTED TIMES: ', merge_sort_adapted.list_times)
 
-    plot = Plot([insertion_sort, merge_sort, merge_sort_adapted])
+    print('SIZE OF INPUT ARRAYS: ', utils.size_of_input_arrays)
+    # print('LIST OF ARRAYS> ', [insertion_sort, merge_sort, merge_sort_adapted])
+    # print('INSERTION SORT LIST TIME: ', insertion_sort.list_times)
+    plot = Plot([insertion_sort, merge_sort, merge_sort_adapted], utils.size_of_input_arrays)
     plot.compare_algorithms()
 
 

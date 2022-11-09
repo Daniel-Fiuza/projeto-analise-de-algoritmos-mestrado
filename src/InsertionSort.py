@@ -15,9 +15,7 @@ class InsertionSort():
     def run(self):
         for array in self.input_arrays:
             init_time = time()
-            # print(f'[{self.class_name}]: INITIAL ARRAY: {array}')
             self.sort(array)
-            # print(f'[{self.class_name}]: FINAL ARRAY: {array}')
             time_elapsed = time() - init_time
             self.list_times.append(time_elapsed)
             self.steps += 1

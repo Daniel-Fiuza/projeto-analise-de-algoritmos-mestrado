@@ -1,8 +1,8 @@
 from src.MergeSort import MergeSort
 from src.InsertionSort import InsertionSort
+from time import time
 
-
-class MergeSortAdapted(MergeSort):
+class MergeSortAdapted(MergeSort, InsertionSort):
     
     def __init__(self, input_arrays, limit_size):
         '''
@@ -15,13 +15,18 @@ class MergeSortAdapted(MergeSort):
         self.limit_size = limit_size
         super().__init__(input_arrays)
 
-
-    def merge_sort(self, array, p, r):
-        if (r - p) < self.limit_size:
-            InsertionSort.sort(array)
-        else:
-            if p < r:
-                q = (p+(r-1))//2
-                self.merge_sort(array, p, q)
-                self.merge_sort(array, q+1, r)
-                self.merge(array, p, q, r)
+    
+    def run(self):
+        for array in self.input_arrays:
+            length_of_array = len(array)
+            init_time = 0
+            if length_of_array < self.limit_size:
+                init_time = time()
+                self.sort(array)
+            else:
+                init_time = time()
+                self.merge_sort(array, 0, length_of_array-1)
+            time_elapsed = time() - init_time
+            self.list_times.append(time_elapsed)
+            self.steps += 1
+            print(f'[{self.class_name}]: STEP {self.steps} OF {len(self.input_arrays)} - TIME ELAPSED: {time_elapsed}')

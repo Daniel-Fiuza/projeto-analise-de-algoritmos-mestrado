@@ -16,9 +16,10 @@ class MergeSort():
     
     def run(self):
         for array in self.input_arrays:
+            length_of_array = len(array)
             init_time = time()
             # print(f'[{self.class_name}]: INITIAL ARRAY: {array}')
-            self.merge_sort(array, 0, len(array)-1)
+            self.merge_sort(array, 0, length_of_array-1)
             # print(f'[{self.class_name}]: FINAL ARRAY: {array}')
             time_elapsed = time() - init_time
             self.list_times.append(time_elapsed)
