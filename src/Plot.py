@@ -17,18 +17,30 @@ class Plot():
         plt.legend()
         plt.show()
 
-        # fig = go.Figure()
-        # fig.add_trace(go.Scatter(x=data['index'],y=data['InsertionSort'], mode='lines',name='lines'))
-        # fig.add_trace(go.Scatter(x=data['index'],y=data['MergeSort'], mode='lines+markers',name='lines+markers'))
-        # fig.add_trace(go.Scatter(x=data['index'],y=data['MergeSortAdapted'], mode='markers',name='markers'))
 
-        # fig.show()
+    def plot_insertion_sort(self):
+        plt.plot(self.data['index'], self.data['InsertionSort'], label = 'InsertionSort')
+        plt.legend()
+        plt.show()
+
+
+    def plot_merge_sort(self):
+        plt.plot(self.data['index'], self.data['MergeSort'], label = 'MergeSort')
+        plt.legend()
+        plt.show()
+
+
+    def plot_merge_sort_adapted(self):
+        plt.plot(self.data['index'], self.data['MergeSortAdapted'], label = 'MergeSortAdapted')
+        plt.legend()
+        plt.show()
+
 
     def prepare_data(self, list_of_algorithms, x_index):
         data = {}
 
         for algorithm in list_of_algorithms:
-            data[algorithm.class_name] = algorithm.list_times
+            data[algorithm.class_name] = algorithm.mean_times
 
         data['index'] = x_index
         return data
@@ -37,4 +49,4 @@ class Plot():
     def organize_data(self, list_of_algorithms, x_index):        
         x_index.sort()
         for algorithm in list_of_algorithms:
-            algorithm.list_times.sort()
+            algorithm.mean_times.sort()

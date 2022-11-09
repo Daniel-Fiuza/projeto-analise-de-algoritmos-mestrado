@@ -8,29 +8,36 @@ import copy
 
 def main():
     utils = Utils()
-    input_arrays = utils.generate_random_arrays(num_of_arrays=10)
+    insertion_sort = InsertionSort()
+    merge_sort = MergeSort()
+    merge_sort_adapted = MergeSortAdapted(limit_size=100)
 
-    input_insert = copy.deepcopy(input_arrays)
-    insertion_sort = InsertionSort(input_insert)
-    insertion_sort.run()
-    
-    input_merge = copy.deepcopy(input_arrays)
-    merge_sort = MergeSort(input_merge)
-    merge_sort.run()
+    print('SIZE OF INPUT ARRAYS: ', utils.size_of_arrays)
+    print('NUMBER OF EXECUTIONS: ', utils.number_of_executions)
 
-    input_merge_adpt = copy.deepcopy(input_arrays)
-    merge_sort_adapted = MergeSortAdapted(input_merge_adpt, limit_size=100)
-    merge_sort_adapted.run()
-    
+    for size in utils.size_of_arrays:
+        for _ in range(utils.number_of_executions):
+            input_arrays = utils.generate_array(size)
 
-    print('INSERTION TIMES: ', insertion_sort.list_times)
-    print('MERGE TIMES: ', merge_sort.list_times)
-    print('MERGE ADAPTED TIMES: ', merge_sort_adapted.list_times)
+            input_insert = input_arrays.copy()
+            insertion_sort.run(input_insert)
+            
+            input_merge = input_arrays.copy()
+            merge_sort.run(input_merge)
 
-    print('SIZE OF INPUT ARRAYS: ', utils.size_of_input_arrays)
-    # print('LIST OF ARRAYS> ', [insertion_sort, merge_sort, merge_sort_adapted])
-    # print('INSERTION SORT LIST TIME: ', insertion_sort.list_times)
-    plot = Plot([insertion_sort, merge_sort, merge_sort_adapted], utils.size_of_input_arrays)
+            input_merge_adpt = input_arrays.copy()
+            merge_sort_adapted.run(input_merge_adpt)
+
+        insertion_sort.calculate_mean_times()
+        merge_sort.calculate_mean_times()
+        merge_sort_adapted.calculate_mean_times()
+
+
+    print('INSERTION TIMES: ', insertion_sort.mean_times)
+    print('MERGE TIMES: ', merge_sort.mean_times)
+    print('MERGE ADAPTED TIMES: ', merge_sort_adapted.mean_times)
+
+    plot = Plot([insertion_sort, merge_sort, merge_sort_adapted], utils.size_of_arrays)
     plot.compare_algorithms()
 
 
