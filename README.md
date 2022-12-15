@@ -4,6 +4,11 @@ Projeto 01 da disciplina Projeto e Análise de Algoritmos do curso de Pós Gradu
 Este projeto tem como objetivo comparar os tempos de execução entre os algoritmos Insertion Sort 
 e Merge Sort Adaptado, de modo que este utiliza o Insertion Sort para entradas pequenas.
 
+## Algoritmo:
+* 7- Insertion Sort comparado com o algoritmo da Seção 3, ou seja, o Merge Sort adaptado pra chamar o Insertion Sort no caso base.
+
+* Seção 3: Merge Sort chamando o Insertion Sort para entradas pequenas.
+    * Apesar do Merge Sort executar em tempo Θ(n lg n) no pior caso e o Insertion Sort rodar em tempo Θ(n2) no pior caso, os fatores  constantes no Insertion Sort podem fazer com que ele seja mais rápido na prática para entradas de tamanho pequeno. Dessa forma, faz sentido usar o Insertion Sort dentro do Merge Sort quando as entradas se tornam suficientemente pequenas. Considere uma modificação do Merge Sort na qual o caso base usa o Insertion Sort para entradas de tamanho até ``100``.
 
 # Equipe
 - ## Daniel Fiuza Cordeiro de Moraes
